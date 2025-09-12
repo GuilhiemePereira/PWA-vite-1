@@ -1,6 +1,6 @@
 import {offlineFallback, warmStrategyCache} from "workbox-recipes"
 import {CacheFirst, StaleWhileRevalidate} from "workbox-strategies"
-import {registerRoute} from "workbox-routing"
+import {registerRoute, Route} from "workbox-routing"
 import {CacheableResponsePlugin} from "workbox-cacheable-response"
 import {ExpirationPlugin} from "workbox-expiration"
 
@@ -19,7 +19,7 @@ const pageCache = new CacheFirst({
 
 // indicando o cache da página
 warmStrategyCache({
-    urls: ['/index.html','/'],
+    urls: ['index.html','/'],
     strategy: pageCache,
 })
 // registrando rota
@@ -39,5 +39,18 @@ registerRoute(({request})=> ['style','script','worker'].includes(request.destina
 
 // configurando offline fallback
 offlineFallback({
-    pageFallback: '/offline.html'
+    pageFallback: 'offline.html'
 })
+
+const imageRoute = new Route(({requeste}) => {
+    return request.destination === "image"
+}, new CacheFirst({
+    cacheName: 'images',
+    plugins:[
+        new ExpirationPlugin({
+            maxAgeSeconds: 60 * 60 * 24 * 30,
+        })
+    ]
+}))
+
+registerRoute(imageRoute)
