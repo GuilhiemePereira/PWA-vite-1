@@ -1,4 +1,4 @@
-import {warmStrategyCache} from "workbox-recipes"
+import {offlineFallback, warmStrategyCache} from "workbox-recipes"
 import {CacheFirst, StaleWhileRevalidate} from "workbox-strategies"
 import {registerRoute} from "workbox-routing"
 import {CacheableResponsePlugin} from "workbox-cacheable-response"
@@ -36,3 +36,8 @@ registerRoute(({request})=> ['style','script','worker'].includes(request.destina
         ]
     })
 )
+
+// configurando offline fallback
+offlineFallback({
+    pageFallback: '/offline.html'
+})
