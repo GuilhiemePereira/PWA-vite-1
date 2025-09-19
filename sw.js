@@ -42,7 +42,7 @@ offlineFallback({
     pageFallback: 'offline.html'
 })
 
-const imageRoute = new Route(({requeste}) => {
+const imageRoute = new Route(({request}) => {
     return request.destination === "image"
 }, new CacheFirst({
     cacheName: 'images',
