@@ -1,19 +1,32 @@
 {
-    "name": "APP progressivo",
-    "short_name": "primeira PWA",
-    "icons": [{
-        "src": "images/3f36fcdd50dcbfd4a15080c52743a596.jpg",
-        "sizes": "256x256",
-        "type": "image/png"
-    },{
-        "src": "images/Icon_Pinguin_1_512x512.png",
-        "sizes": "512x512",
-        "type": "image/png"
-      }
-    ],
-    "lang": "pt-BR",
-    "start_url": "/",
-    "display": "standalone",
-    "background_color": "white",
-    "theme_color": "white"
+  "name": "camera",
+  "short_name": "pc",
+  "icons": [
+    {
+      "src": "images/camera_128.png",
+      "sizes": "128x128",
+      "type": "image/png"
+    },
+    {
+      "src": "images/camera_256.png",
+      "sizes": "256x256",
+      "type": "image/png"
+    },
+    {
+      "src": "images/camera_512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "images/camera_64.png",
+      "sizes": "256x256",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "lang": "pt-BR",
+  "start_url": "/index.html",
+  "display": "standalone",
+  "background_color": "white",
+  "theme_color": "white"
 }
